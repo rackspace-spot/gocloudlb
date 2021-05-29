@@ -76,9 +76,7 @@ func Delete(client *gophercloud.ServiceClient, id uint64) (r DeleteResult) {
 	url := client.ServiceURL("loadbalancers", strconv.FormatUint(id, 10))
 	log.Printf("DELETE %s", url)
 
-	_, r.Err = client.Delete(url, &gophercloud.RequestOpts{
-		JSONResponse: &r.Body,
-	})
+	_, r.Err = client.Delete(url, &gophercloud.RequestOpts{})
 	return
 }
 
