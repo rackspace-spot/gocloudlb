@@ -22,6 +22,7 @@ import (
 	"github.com/gophercloud/gophercloud"
 	"github.com/gophercloud/gophercloud/pagination"
 
+	"github.com/os-pc/gocloudlb/accesslists"
 	"github.com/os-pc/gocloudlb/nodes"
 	"github.com/os-pc/gocloudlb/virtualips"
 )
@@ -98,6 +99,8 @@ type CreateOpts struct {
 	VirtualIps []virtualips.CreateOpts `json:"virtualIps"`
 
 	Nodes []nodes.CreateOpts `json:"nodes"`
+
+	AccessLists []accesslists.CreateOpts `json:"accessList,omitempty"`
 }
 
 // Create creates a requested loadbalancer
@@ -106,7 +109,7 @@ func Create(client *gophercloud.ServiceClient, opts CreateOpts) (r CreateResult)
 
 	log.Printf("POST %s", url)
 
-	var body = struct {
+	body := struct {
 		LoadBalancer CreateOpts `json:"loadBalancer"`
 	}{
 		opts,
