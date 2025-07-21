@@ -124,7 +124,7 @@ type LoadBalancer struct {
 	// Nodes servicing the requests
 	Nodes []nodes.Node `json:"nodes"`
 
-	AccessLists []accesslists.NetworkItem `json:"accessLists,omitempty"`
+	AccessList []accesslists.NetworkItem `json:"accessList,omitempty"`
 
 	// Created is the date when the load balancer was created.
 	Created struct {

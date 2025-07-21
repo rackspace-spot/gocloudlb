@@ -100,7 +100,7 @@ type CreateOpts struct {
 
 	Nodes []nodes.CreateOpts `json:"nodes"`
 
-	AccessLists []accesslists.CreateOpts `json:"accessList,omitempty"`
+	AccessList []accesslists.CreateOpts `json:"accessList,omitempty"`
 }
 
 // Create creates a requested loadbalancer
