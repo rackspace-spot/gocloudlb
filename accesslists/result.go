@@ -8,7 +8,7 @@ type GetResult struct {
 	gophercloud.Result
 }
 
-// Extract interprets a GetResult as a Node.
+// Extract interprets a GetResult as accesslist.
 func (r GetResult) Extract() ([]NetworkItem, error) {
 	var s struct {
 		AccessList []NetworkItem `json:"accessList"`
