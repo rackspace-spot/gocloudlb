@@ -19,6 +19,7 @@ import (
 	"github.com/gophercloud/gophercloud"
 	"github.com/gophercloud/gophercloud/pagination"
 
+	"github.com/os-pc/gocloudlb/accesslists"
 	"github.com/os-pc/gocloudlb/nodes"
 	"github.com/os-pc/gocloudlb/virtualips"
 )
@@ -122,6 +123,8 @@ type LoadBalancer struct {
 
 	// Nodes servicing the requests
 	Nodes []nodes.Node `json:"nodes"`
+
+	AccessList []accesslists.NetworkItem `json:"accessList,omitempty"`
 
 	// Created is the date when the load balancer was created.
 	Created struct {
