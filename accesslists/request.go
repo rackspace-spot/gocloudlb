@@ -22,6 +22,7 @@ func Get(client *gophercloud.ServiceClient, lbID uint64) (r GetResult) {
 	return
 }
 
+// Create creates a new access list entry for a specific load balancer by its ID.
 func Create(client *gophercloud.ServiceClient, lbID uint64, opts []CreateOpts) (r CreateResult) {
 	url := client.ServiceURL("loadbalancers", strconv.FormatUint(lbID, 10), "accesslist")
 	log.Printf("POST %s", url)
