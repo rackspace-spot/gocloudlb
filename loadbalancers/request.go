@@ -118,3 +118,28 @@ func Create(client *gophercloud.ServiceClient, opts CreateOpts) (r CreateResult)
 	_, r.Err = client.Post(url, body, &r.Body, nil)
 	return
 }
+
+// UpdateOpts contain the values necessary to create a loadbalancer
+type UpdateOpts struct {
+	// Name is the name of the LoadBalancer.
+	Name string `json:"name"`
+
+	// Protocol of the service that is being load balanced
+	Protocol string `json:"protocol"`
+}
+
+// Create creates a requested loadbalancer
+func Update(client *gophercloud.ServiceClient, id uint64, opts UpdateOpts) (r UpdateResult) {
+	url := client.ServiceURL("loadbalancers", strconv.FormatUint(id, 10))
+
+	log.Printf("PUT %s", url)
+
+	body := struct {
+		LoadBalancer UpdateOpts `json:"loadBalancer"`
+	}{
+		opts,
+	}
+
+	_, r.Err = client.Put(url, body, nil, nil)
+	return
+}
