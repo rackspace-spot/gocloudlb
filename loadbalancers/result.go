@@ -38,6 +38,11 @@ func (r CreateResult) Extract() (*LoadBalancer, error) {
 	return s.LoadBalancer, err
 }
 
+// UpdateResult is the response from a PUT operation.
+type UpdateResult struct {
+	gophercloud.ErrResult
+}
+
 // method to determine if the call succeeded or failed.
 type DeleteResult struct {
 	gophercloud.ErrResult
