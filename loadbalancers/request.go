@@ -126,6 +126,9 @@ type UpdateOpts struct {
 
 	// Protocol of the service that is being load balanced
 	Protocol string `json:"protocol"`
+
+	// Port number for the service you are load balancing
+	Port int32 `json:"port"`
 }
 
 // Create creates a requested loadbalancer
