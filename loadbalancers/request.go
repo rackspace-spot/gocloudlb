@@ -129,6 +129,12 @@ type UpdateOpts struct {
 
 	// Port number for the service you are load balancing
 	Port int32 `json:"port"`
+
+	// Algorithm that defines how traffic should be directed between back-end nodes
+	Algorithm string `json:"algorithm,omitempty"`
+
+	// The timeout value for the load balancer and communications with its nodes
+	Timeout uint `json:"timeout,omitempty"`
 }
 
 // Create creates a requested loadbalancer
