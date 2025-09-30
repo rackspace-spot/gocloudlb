@@ -75,9 +75,7 @@ func Delete(client *gophercloud.ServiceClient, lbID uint64, id uint64) (r Delete
 	url := client.ServiceURL("loadbalancers", strconv.FormatUint(lbID, 10), "nodes", strconv.FormatUint(id, 10))
 	log.Printf("DELETE %s", url)
 
-	_, r.Err = client.Delete(url, &gophercloud.RequestOpts{
-		JSONResponse: &r.Body,
-	})
+	_, r.Err = client.Delete(url, &gophercloud.RequestOpts{})
 	return
 }
 
@@ -105,7 +103,7 @@ func Create(client *gophercloud.ServiceClient, lbID uint64, opts []CreateOpts) (
 
 	log.Printf("POST %s", url)
 
-	var body = struct {
+	body := struct {
 		Node []CreateOpts `json:"nodes"`
 	}{
 		opts,
